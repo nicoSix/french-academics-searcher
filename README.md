@@ -6,5 +6,8 @@ To use it, follow those commands:
 
 '''
 npm install
-node parse.js <your query>
+node parse.js <your query> <order>
 '''
+
+Order can be substituted with 'institution' or 'discipline', depending if you prefer to group results by institution or discipline.
+Results can be pretty-viewed using an online JSON viewer, available on the net.
