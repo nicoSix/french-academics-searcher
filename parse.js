@@ -8,31 +8,39 @@ const queryTerm = process.argv[2]
 const order = process.argv[3]
 
 function parseByInstitution(theses) {
-    parsed = {};
+    var parsed = {};
 
     theses.forEach(these => {
         these.etablissement.forEach(etab => {
-            if(!parsed[etab]) {
-                parsed[etab] = {
-                    discipline: {}
-                }
-            }
-        
-            if(!parsed[etab].discipline[these.discipline]) {
-                parsed[etab].discipline[these.discipline] = {
-                    directeursTheses: {}
-                }
-            }
-        
-            these.directeurThese.forEach(directeur => {
-                if(!parsed[etab].discipline[these.discipline].directeursTheses[directeur]) {
-                    parsed[etab].discipline[these.discipline].directeursTheses[directeur] = {
-                        doctorants: []
+            if(etab != "") {
+                if(!parsed[etab]) {
+                    parsed[etab] = {
+                        discipline: {},
+                        count: 0
                     }
                 }
-        
-                parsed[etab].discipline[these.discipline].directeursTheses[directeur].doctorants.push(these.auteur) 
-            })
+    
+                parsed[etab].count++;
+            
+                if(!parsed[etab].discipline[these.discipline]) {
+                    parsed[etab].discipline[these.discipline] = {
+                        directeursTheses: {},
+                        count: 0
+                    }
+                }
+    
+                parsed[etab].discipline[these.discipline].count++;
+            
+                these.directeurThese.forEach(directeur => {
+                    if(!parsed[etab].discipline[these.discipline].directeursTheses[directeur]) {
+                        parsed[etab].discipline[these.discipline].directeursTheses[directeur] = {
+                            doctorants: []
+                        }
+                    }
+            
+                    parsed[etab].discipline[these.discipline].directeursTheses[directeur].doctorants.push(these.auteur) 
+                })
+            }
         })
     })
 
@@ -40,31 +48,39 @@ function parseByInstitution(theses) {
 }
 
 function parseByDiscipline(theses) {
-    parsed = {};
+    var parsed = {};
 
     theses.forEach(these => {
         if(!parsed[these.discipline]) {
             parsed[these.discipline] = {
-                etabSoutenance: {}
+                etabSoutenance: {},
+                count: 0
             }
         }
+
+        parsed[these.discipline].count++;
     
         these.etablissement.forEach(etab => {
-            if(!parsed[these.discipline].etabSoutenance[etab]) {
-                parsed[these.discipline].etabSoutenance[etab] = {
-                    directeursTheses: {}
-                }
-            }
-
-            these.directeurThese.forEach(directeur => {
-                if(!parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur]) {
-                    parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur] = {
-                        doctorants: []
+            if(etab != "") {
+                if(!parsed[these.discipline].etabSoutenance[etab]) {
+                    parsed[these.discipline].etabSoutenance[etab] = {
+                        directeursTheses: {},
+                        count: 0
                     }
                 }
-        
-                parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur].doctorants.push(these.auteur) 
-            })
+    
+                parsed[these.discipline].etabSoutenance[etab].count++;
+    
+                these.directeurThese.forEach(directeur => {
+                    if(!parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur]) {
+                        parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur] = {
+                            doctorants: []
+                        }
+                    }
+            
+                    parsed[these.discipline].etabSoutenance[etab].directeursTheses[directeur].doctorants.push(these.auteur) 
+                })
+            }
         })
     })
 
