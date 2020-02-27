@@ -1,0 +1,14 @@
+{
+  "name": "theses-fr-parser",
+  "version": "1.0.0",
+  "description": "Load then parse thesis.fr website content for a given request, to get an approximative list of persons which works on a defined topic.",
+  "main": "parse.js",
+  "scripts": {
+    "test": "node parse.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
