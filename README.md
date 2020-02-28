@@ -5,7 +5,7 @@ This node program is capable of retrieving the results from the theses.fr websit
 To use it, follow those commands:
 
 ```
-npm install node
+npm install
 node parse.js <your request> <order>
 ```
 
