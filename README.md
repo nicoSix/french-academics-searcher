@@ -13,7 +13,7 @@ Arguments:
 - --query (required): researched subject inside thesis database
 - --allintitle: will only be parsed theses with the query term inside the title
 - --order: specified order will come first in the generated arborescence of the theses list.
- - institution
- - discipline
+-- institution
+-- discipline
 
 Order can be substituted with 'institution' or 'discipline', depending if you prefer to group results by institution or discipline. Results can be pretty-viewed using an online JSON viewer, available on the net.
