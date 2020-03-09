@@ -1,12 +1,12 @@
-# Theses.fr parser
+# French academics searcher
 
-This node program is capable of retrieving the results from the theses.fr website, and aggregating them to give an overview of the theses being prepared and completed by institution and by thesis director. Consequently, it allows to roughly see the institution and academics working on a given subject.
+This node program is capable of retrieving the results from multiple academics websites and aggregating them to give an overview of the theses and papers being prepared and completed by institution and by thesis director. Consequently, it allows to roughly see the institution and academics working on a given subject.
 
 To use it, follow those commands:
 
 ```
 npm install
-node parse.js 
+node search.js 
 ```
 
 Arguments:
