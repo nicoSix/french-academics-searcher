@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "json2csv": "^4.5.4",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "yargs": "^15.1.0"
   }
 }
